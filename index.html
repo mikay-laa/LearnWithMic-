@@ -77,7 +77,7 @@
 </head>
 <body class="min-h-screen flex flex-col justify-between selection:bg-hotPink selection:text-white">
 
-  <!-- TOP NAVBAR -->
+  <!-- TOP NAVIGATION BAR -->
   <nav class="glass-nav fixed top-0 left-0 w-full z-40 px-6 py-4 flex items-center justify-between">
     <div class="flex items-center space-x-3">
       <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-hotPink to-purple-600 flex items-center justify-center shadow-neon-glow">
@@ -88,12 +88,11 @@
       </span>
     </div>
 
-    <!-- Desktop Navigation -->
+    <!-- Menu Links -->
     <div class="hidden md:flex items-center space-x-8 text-sm font-semibold tracking-wider text-pink-200/80">
       <a href="#hero" class="hover:text-cyberPink transition-colors">HOME</a>
       <a href="#tools" class="hover:text-cyberPink transition-colors">STUDY TOOLS</a>
       <a href="#flashcards" class="hover:text-cyberPink transition-colors">FLASHCARDS</a>
-      <a href="#journal" class="hover:text-cyberPink transition-colors">JOURNAL</a>
       <a href="#resources" class="hover:text-cyberPink transition-colors">RESOURCES</a>
     </div>
 
@@ -127,9 +126,8 @@
       Where I document my journey, share educational tools, and help students discover better and stress-free ways to learn.
     </p>
 
-    <!-- Hero Action Buttons -->
+    <!-- Watch Video Hero Button -->
     <div class="flex flex-col sm:flex-row items-center gap-4">
-      <!-- Main "Watch Video" Button styled like the reference -->
       <button onclick="openVideoModal()" class="w-full sm:w-auto px-8 py-4 rounded-full bg-gradient-to-r from-hotPink via-cyberPink to-purple-600 text-white font-bold tracking-wider text-sm flex items-center justify-center space-x-3 shadow-neon-btn hover:shadow-neon-glow hover:scale-105 transition-all">
         <span>WATCH THE VIDEO</span>
         <i data-lucide="play" class="w-5 h-5 fill-current"></i>
@@ -190,7 +188,7 @@
           </div>
 
           <div class="flex space-x-2 mb-4">
-            <input type="text" id="taskInput" placeholder="Add study target (e.g., Read Module 3)..." class="flex-1 bg-black/40 border border-pink-500/30 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-hotPink">
+            <input type="text" id="taskInput" placeholder="Add study target..." class="flex-1 bg-black/40 border border-pink-500/30 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-hotPink">
             <button onclick="addTask()" class="px-5 py-2.5 rounded-xl bg-hotPink text-white font-bold hover:bg-pink-600 transition-all">
               ADD
             </button>
@@ -198,7 +196,7 @@
 
           <ul id="taskList" class="space-y-2.5 max-h-52 overflow-y-auto pr-2">
             <li class="flex items-center justify-between p-3 rounded-xl bg-black/30 border border-pink-500/20 text-sm">
-              <span class="text-pink-100">Review Educational Tech Presentation</span>
+              <span class="text-pink-100">Review Educational Technology Presentation</span>
               <button onclick="this.parentElement.remove()" class="text-pink-400 hover:text-hotPink"><i data-lucide="trash-2" class="w-4 h-4"></i></button>
             </li>
           </ul>
@@ -231,7 +229,7 @@
             <p class="text-xs text-pink-300">Click to flip card ⚡</p>
           </div>
           <div class="absolute inset-0 glass-card rounded-2xl p-6 flex flex-col justify-center items-center text-center backface-hidden rotate-y-180 bg-gradient-to-br from-pink-950/80 to-purple-950/80 border-hotPink">
-            <p class="text-sm text-pink-100 leading-relaxed">Testing yourself without looking at notes strengthens neural pathways and memory retention much faster than passive re-reading.</p>
+            <p class="text-sm text-pink-100 leading-relaxed">Testing yourself without looking at notes strengthens memory retention much faster than passive re-reading.</p>
           </div>
         </div>
       </div>
@@ -245,7 +243,7 @@
             <p class="text-xs text-pink-300">Click to flip card ⚡</p>
           </div>
           <div class="absolute inset-0 glass-card rounded-2xl p-6 flex flex-col justify-center items-center text-center backface-hidden rotate-y-180 bg-gradient-to-br from-pink-950/80 to-purple-950/80 border-hotPink">
-            <p class="text-sm text-pink-100 leading-relaxed">Reviewing study material at increasing time intervals (1 day, 3 days, 1 week) prevents forgetting and moves ideas to long-term memory.</p>
+            <p class="text-sm text-pink-100 leading-relaxed">Reviewing study material at increasing intervals (1 day, 3 days, 1 week) moves ideas to long-term memory.</p>
           </div>
         </div>
       </div>
@@ -259,7 +257,7 @@
             <p class="text-xs text-pink-300">Click to flip card ⚡</p>
           </div>
           <div class="absolute inset-0 glass-card rounded-2xl p-6 flex flex-col justify-center items-center text-center backface-hidden rotate-y-180 bg-gradient-to-br from-pink-950/80 to-purple-950/80 border-hotPink">
-            <p class="text-sm text-pink-100 leading-relaxed">Explain complex concepts in simple terms as if teaching a beginner. If you get stuck, re-read the topic to fix knowledge gaps.</p>
+            <p class="text-sm text-pink-100 leading-relaxed">Explain complex concepts in simple terms as if teaching a beginner to highlight and fix knowledge gaps.</p>
           </div>
         </div>
       </div>
@@ -275,7 +273,7 @@
           <span class="text-xs font-bold text-hotPink tracking-widest uppercase">Educational Tools & Freebies</span>
           <h3 class="font-heading text-3xl font-bold text-white mt-1 mb-3">Mic's Study Toolkit</h3>
           <p class="text-sm text-pink-100/80 max-w-xl leading-relaxed">
-            Access free study planner templates, curated Spotify study playlists, and digital learning tools designed to keep your routine stress-free.
+            Access study planner templates and digital learning tools designed to keep your routine stress-free.
           </p>
         </div>
         <div class="flex flex-col sm:flex-row gap-4 w-full md:w-auto">
@@ -291,7 +289,7 @@
   <!-- FOOTER -->
   <footer class="glass-nav py-8 px-6 text-center text-xs text-pink-300/70 border-t border-pink-500/20">
     <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
-      <p>© 2026 LearnWithMic — Built with ❤️ for stress-free learning.</p>
+      <p>© 2026 LearnWithMic — Built for stress-free learning.</p>
       <div class="flex space-x-6">
         <a href="#hero" class="hover:text-hotPink">Home</a>
         <a href="#tools" class="hover:text-hotPink">Tools</a>
@@ -300,7 +298,7 @@
     </div>
   </footer>
 
-  <!-- VIDEO PLAYER MODAL -->
+  <!-- VIDEO PLAYER MODAL WITH FALLBACK LINK -->
   <div id="videoModal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-md hidden flex items-center justify-center p-4">
     <div class="glass-card w-full max-w-4xl rounded-3xl overflow-hidden border border-hotPink/50 shadow-neon-glow relative flex flex-col">
       
@@ -316,7 +314,7 @@
       </div>
 
       <!-- Video Embed Container -->
-      <div class="relative w-full aspect-video bg-black">
+      <div class="relative w-full aspect-video bg-black flex flex-col items-center justify-center">
         <iframe 
           id="introVideoFrame"
           class="w-full h-full"
@@ -328,6 +326,14 @@
         </iframe>
       </div>
 
+      <!-- Fallback bar in case Drive blocks iframe playback -->
+      <div class="p-3 bg-black/80 border-t border-pink-500/20 text-center text-xs text-pink-200 flex justify-between items-center px-6">
+        <span>Video not loading? Make sure Google Drive sharing is set to "Anyone with the link".</span>
+        <a href="https://drive.google.com/file/d/10Ral6GUJEfOjCfJt8tfbZHsh51iN_EEi/view?usp=drivesdk" target="_blank" class="px-3 py-1 rounded bg-hotPink text-white font-bold hover:bg-pink-600">
+          Open in New Tab ↗
+        </a>
+      </div>
+
     </div>
   </div>
 
@@ -336,13 +342,13 @@
     // Initialize Lucide Icons
     lucide.createIcons();
 
-    // Video Modal Controls
+    // Video Modal Controls (Using preview mode for embedded Google Drive video)
     const videoModal = document.getElementById('videoModal');
     const introVideoFrame = document.getElementById('introVideoFrame');
-    const videoUrl = "https://drive.google.com/file/d/10Ral6GUJEfOjCfJt8tfbZHsh51iN_EEi/preview";
+    const videoEmbedUrl = "https://drive.google.com/file/d/10Ral6GUJEfOjCfJt8tfbZHsh51iN_EEi/preview";
 
     function openVideoModal() {
-      introVideoFrame.src = videoUrl;
+      introVideoFrame.src = videoEmbedUrl;
       videoModal.classList.remove('hidden');
     }
 
@@ -351,7 +357,6 @@
       videoModal.classList.add('hidden');
     }
 
-    // Close modal when clicking outside
     videoModal.addEventListener('click', (e) => {
       if (e.target === videoModal) closeVideoModal();
     });
@@ -386,7 +391,7 @@
           } else {
             clearInterval(timerInterval);
             isRunning = false;
-            alert("Timer finished! Take a break or start another focus session.");
+            alert("Timer finished! Take a break.");
             resetTimer();
           }
         }, 1000);
@@ -400,14 +405,4 @@
       timeLeft = 25 * 60;
       timerModeLabel.textContent = "Study Mode";
       startBtn.innerHTML = `<i data-lucide="play" class="w-4 h-4 fill-current"></i><span>START</span>`;
-      updateDisplay();
-      lucide.createIcons();
-    }
-
-    function setTimerMode(mode) {
-      clearInterval(timerInterval);
-      isRunning = false;
-      startBtn.innerHTML = `<i data-lucide="play" class="w-4 h-4 fill-current"></i><span>START</span>`;
-      if (mode === 'study') {
-        timeLeft = 25 * 60;
-        timerModeLabel.
+      updat
