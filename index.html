@@ -1,359 +1,413 @@
-```html
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LearnWithMic — Study Smart, Not Hard 💖✨</title>
-    <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- FontAwesome Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LearnWithMic — Study Smart, Not Hard</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Fonts & Lucide Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/lucide@latest"></script>
 
-    <!-- Tailwind Custom Config -->
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        cyberpink: {
-                            50: '#fff1f8',
-                            100: '#ffe4f3',
-                            200: '#fecddf',
-                            300: '#fda4ca',
-                            400: '#fb71aa',
-                            500: '#f43f8e',
-                            600: '#e11d74',
-                            700: '#be1258',
-                            glow: '#ff2e93'
-                        },
-                        cyberlavender: {
-                            100: '#f3e8ff',
-                            300: '#d8b4fe',
-                            500: '#a855f7',
-                            800: '#6b21a8'
-                        },
-                        darkpink: '#2d0a1e'
-                    },
-                    fontFamily: {
-                        sans: ['"Outfit"', '"Plus Jakarta Sans"', 'sans-serif'],
-                        serif: ['"Playfair Display"', 'serif'],
-                    }
-                }
-            }
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            cyberPink: '#FF2E93',
+            hotPink: '#FF007A',
+            softPink: '#FFB8E0',
+            glowPink: '#FF73C3',
+            darkPinkBg: '#120516',
+            cardBg: 'rgba(35, 12, 42, 0.65)',
+            cardBorder: 'rgba(255, 115, 195, 0.25)',
+          },
+          fontFamily: {
+            heading: ['Outfit', 'sans-serif'],
+            body: ['Plus Jakarta Sans', 'sans-serif'],
+          },
+          boxShadow: {
+            'neon-glow': '0 0 25px rgba(255, 46, 147, 0.45)',
+            'neon-btn': '0 0 20px rgba(255, 0, 122, 0.6)',
+            'card-glow': '0 8px 32px 0 rgba(255, 46, 147, 0.15)',
+          }
         }
-    </script>
+      }
+    }
+  </script>
 
-    <style>
-        /* Cyber-Kawaii Grid Studio Background */
-        body {
-            background-color: #faf4f8;
-            background-image: 
-                linear-gradient(to right, rgba(244, 63, 142, 0.08) 1px, transparent 1px),
-                linear-gradient(to bottom, rgba(244, 63, 142, 0.08) 1px, transparent 1px);
-            background-size: 32px 32px;
-            color: #2e0c1f;
-        }
+  <style>
+    body {
+      background-color: #0d0311;
+      background-image: 
+        radial-gradient(circle at 15% 15%, rgba(255, 0, 122, 0.18) 0%, transparent 40%),
+        radial-gradient(circle at 85% 85%, rgba(147, 51, 234, 0.15) 0%, transparent 40%),
+        linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+      background-size: 100% 100%, 100% 100%, 40px 40px, 40px 40px;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      color: #fce7f3;
+    }
 
-        /* Glassmorphism Card Style */
-        .glass-card {
-            background: rgba(255, 255, 255, 0.75);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border: 1px solid rgba(254, 205, 223, 0.8);
-            box-shadow: 0 10px 30px -5px rgba(244, 63, 142, 0.12), 0 4px 12px 0 rgba(216, 180, 254, 0.15);
-            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-        }
+    .glass-card {
+      background: rgba(28, 9, 36, 0.7);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 115, 195, 0.2);
+    }
 
-        .glass-card:hover {
-            box-shadow: 0 15px 35px -5px rgba(244, 63, 142, 0.22), 0 8px 20px 0 rgba(216, 180, 254, 0.25);
-            border-color: rgba(251, 113, 170, 0.9);
-        }
+    .glass-nav {
+      background: rgba(18, 5, 22, 0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255, 115, 195, 0.2);
+    }
 
-        /* Glowing Accent Pills */
-        .glow-pill {
-            box-shadow: 0 0 15px rgba(244, 63, 142, 0.35);
-        }
+    /* Flip Card Styles */
+    .perspective-1000 { perspective: 1000px; }
+    .transform-style-3d { transform-style: preserve-3d; }
+    .backface-hidden { backface-visibility: hidden; }
+    .rotate-y-180 { transform: rotateY(180deg); }
 
-        .glow-pill-lavender {
-            box-shadow: 0 0 15px rgba(168, 85, 247, 0.35);
-        }
-
-        /* 3D Flip Card for Flashcards */
-        .perspective-1000 {
-            perspective: 1000px;
-        }
-
-        .transform-style-3d {
-            transform-style: preserve-3d;
-            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .backface-hidden {
-            backface-visibility: hidden;
-            -webkit-backface-visibility: hidden;
-        }
-
-        .rotate-y-180 {
-            transform: rotateY(180deg);
-        }
-
-        .flipped {
-            transform: rotateY(180deg);
-        }
-
-        /* Floating Stickers Keyframe */
-        @keyframes stickerFloat {
-            0%, 100% { transform: translateY(0px) rotate(0deg); }
-            50% { transform: translateY(-10px) rotate(3deg); }
-        }
-
-        .animate-sticker {
-            animation: stickerFloat 4s ease-in-out infinite;
-        }
-
-        /* Neon Pulse */
-        @keyframes neonGlow {
-            0%, 100% { filter: drop-shadow(0 0 8px rgba(244, 63, 142, 0.6)); }
-            50% { filter: drop-shadow(0 0 16px rgba(244, 63, 142, 0.9)); }
-        }
-
-        .neon-glow {
-            animation: neonGlow 3s ease-in-out infinite;
-        }
-
-        /* Custom Scrollbar */
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-        ::-webkit-scrollbar-track {
-            background: #faf4f8;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #fda4ca;
-            border-radius: 9999px;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: #f43f8e;
-        }
-    </style>
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-track { background: #0d0311; }
+    ::-webkit-scrollbar-thumb { background: #ff2e93; border-radius: 4px; }
+  </style>
 </head>
-<body class="font-sans antialiased text-darkpink selection:bg-cyberpink-300 selection:text-cyberpink-900">
+<body class="min-h-screen flex flex-col justify-between selection:bg-hotPink selection:text-white">
 
-    <!-- Sticky Glass Navigation -->
-    <nav class="sticky top-4 z-50 max-w-6xl mx-auto px-4 sm:px-6">
-        <div class="glass-card rounded-full px-6 py-3 flex justify-between items-center bg-white/80 border-cyberpink-200">
-            <!-- Brand Logo -->
-            <a href="#" class="flex items-center gap-2 group">
-                <div class="w-9 h-9 rounded-full bg-gradient-to-tr from-cyberpink-500 to-cyberlavender-500 flex items-center justify-center text-white text-base font-bold shadow-md group-hover:scale-110 transition-transform">
-                    ✨
-                </div>
-                <span class="font-bold text-xl sm:text-2xl tracking-tight bg-gradient-to-r from-cyberpink-600 via-cyberpink-500 to-cyberlavender-500 bg-clip-text text-transparent">
-                    LearnWithMic
-                </span>
-            </a>
+  <!-- TOP NAVBAR -->
+  <nav class="glass-nav fixed top-0 left-0 w-full z-40 px-6 py-4 flex items-center justify-between">
+    <div class="flex items-center space-x-3">
+      <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-hotPink to-purple-600 flex items-center justify-center shadow-neon-glow">
+        <i data-lucide="sparkles" class="w-5 h-5 text-white"></i>
+      </div>
+      <span class="font-heading font-extrabold text-2xl tracking-wide bg-gradient-to-r from-white via-softPink to-cyberPink bg-clip-text text-transparent">
+        LearnWithMic
+      </span>
+    </div>
 
-            <!-- Desktop Nav Links -->
-            <div class="hidden md:flex items-center space-x-6 text-sm font-semibold text-pink-950/80">
-                <a href="#home" class="hover:text-cyberpink-600 transition-colors">Home</a>
-                <a href="#timer" class="hover:text-cyberpink-600 transition-colors">Study Hub</a>
-                <a href="#planner" class="hover:text-cyberpink-600 transition-colors">Planner</a>
-                <a href="#journal" class="hover:text-cyberpink-600 transition-colors">Journal</a>
-                <a href="#resources" class="hover:text-cyberpink-600 transition-colors">Resource Desk</a>
-            </div>
+    <!-- Desktop Navigation -->
+    <div class="hidden md:flex items-center space-x-8 text-sm font-semibold tracking-wider text-pink-200/80">
+      <a href="#hero" class="hover:text-cyberPink transition-colors">HOME</a>
+      <a href="#tools" class="hover:text-cyberPink transition-colors">STUDY TOOLS</a>
+      <a href="#flashcards" class="hover:text-cyberPink transition-colors">FLASHCARDS</a>
+      <a href="#journal" class="hover:text-cyberPink transition-colors">JOURNAL</a>
+      <a href="#resources" class="hover:text-cyberPink transition-colors">RESOURCES</a>
+    </div>
 
-            <!-- Focus CTA Button -->
-            <div class="hidden sm:flex items-center gap-3">
-                <a href="#timer" class="px-5 py-2 rounded-full bg-gradient-to-r from-cyberpink-500 to-cyberlavender-500 text-white font-semibold text-xs tracking-wider uppercase transition-all hover:opacity-95 shadow-md hover:shadow-lg hover:scale-105 flex items-center gap-2 glow-pill">
-                    <span class="w-2 h-2 rounded-full bg-white animate-ping"></span> Live Studio
-                </a>
-            </div>
+    <button onclick="openVideoModal()" class="hidden md:flex items-center space-x-2 px-5 py-2.5 rounded-full bg-gradient-to-r from-hotPink to-pink-600 text-white font-semibold text-sm shadow-neon-btn hover:scale-105 transition-all">
+      <i data-lucide="play-circle" class="w-4 h-4"></i>
+      <span>WATCH VIDEO</span>
+    </button>
+  </nav>
 
-            <!-- Mobile menu button -->
-            <button id="mobile-menu-btn" class="md:hidden p-2 text-cyberpink-600 text-xl focus:outline-none">
-                <i class="fa-solid fa-bars-staggered"></i>
+  <!-- HERO SECTION -->
+  <section id="hero" class="pt-36 pb-20 px-6 max-w-6xl mx-auto text-center flex flex-col items-center justify-center relative">
+    
+    <!-- Badge -->
+    <div class="inline-flex items-center space-x-2 px-4 py-2 rounded-full glass-card border-hotPink/40 text-pink-300 text-xs font-bold tracking-widest uppercase mb-6 shadow-neon-glow">
+      <span class="w-2 h-2 rounded-full bg-hotPink animate-ping"></span>
+      <span>BEED Student & Digital Educator</span>
+    </div>
+
+    <!-- Title -->
+    <h1 class="font-heading text-5xl md:text-7xl font-extrabold tracking-tight text-white mb-4">
+      LearnWith<span class="bg-gradient-to-r from-hotPink via-glowPink to-purple-400 bg-clip-text text-transparent">Mic</span>
+    </h1>
+
+    <!-- Tagline -->
+    <h2 class="text-xl md:text-2xl font-bold text-softPink tracking-wider mb-6 uppercase">
+      ⚡ Study Smart, Not Hard ⚡
+    </h2>
+
+    <!-- Introduction Statement -->
+    <p class="max-w-2xl text-base md:text-lg text-pink-100/80 leading-relaxed mb-10 font-light">
+      Where I document my journey, share educational tools, and help students discover better and stress-free ways to learn.
+    </p>
+
+    <!-- Hero Action Buttons -->
+    <div class="flex flex-col sm:flex-row items-center gap-4">
+      <!-- Main "Watch Video" Button styled like the reference -->
+      <button onclick="openVideoModal()" class="w-full sm:w-auto px-8 py-4 rounded-full bg-gradient-to-r from-hotPink via-cyberPink to-purple-600 text-white font-bold tracking-wider text-sm flex items-center justify-center space-x-3 shadow-neon-btn hover:shadow-neon-glow hover:scale-105 transition-all">
+        <span>WATCH THE VIDEO</span>
+        <i data-lucide="play" class="w-5 h-5 fill-current"></i>
+      </button>
+
+      <a href="#tools" class="w-full sm:w-auto px-8 py-4 rounded-full glass-card hover:bg-hotPink/20 text-pink-200 font-semibold text-sm transition-all border border-pink-500/30">
+        EXPLORE TOOLS
+      </a>
+    </div>
+  </section>
+
+  <!-- STUDY TOOLS SECTION -->
+  <section id="tools" class="py-16 px-6 max-w-6xl mx-auto w-full">
+    <div class="text-center mb-12">
+      <h3 class="font-heading text-3xl font-bold text-white mb-2">Interactive Productivity Deck</h3>
+      <p class="text-pink-200/70 text-sm">Tools designed to improve focus and keep study sessions stress-free.</p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+      
+      <!-- Pomodoro Timer -->
+      <div class="glass-card rounded-3xl p-8 relative overflow-hidden">
+        <div class="flex items-center justify-between mb-6">
+          <div class="flex items-center space-x-3">
+            <i data-lucide="timer" class="w-6 h-6 text-hotPink"></i>
+            <h4 class="font-heading font-bold text-xl text-white">Pomodoro Focus Timer</h4>
+          </div>
+          <span id="timerModeLabel" class="text-xs px-3 py-1 rounded-full bg-hotPink/20 text-pink-300 border border-hotPink/40">Study Mode</span>
+        </div>
+
+        <div class="text-center my-6">
+          <div id="timerDisplay" class="font-heading font-extrabold text-6xl text-white tracking-widest my-4">25:00</div>
+          
+          <div class="flex justify-center space-x-3 my-6">
+            <button onclick="setTimerMode('study')" class="px-4 py-1.5 rounded-lg bg-pink-900/40 text-xs font-semibold hover:bg-hotPink transition-colors">Study (25m)</button>
+            <button onclick="setTimerMode('short')" class="px-4 py-1.5 rounded-lg bg-pink-900/40 text-xs font-semibold hover:bg-hotPink transition-colors">Short Break (5m)</button>
+            <button onclick="setTimerMode('long')" class="px-4 py-1.5 rounded-lg bg-pink-900/40 text-xs font-semibold hover:bg-hotPink transition-colors">Long Break (15m)</button>
+          </div>
+
+          <div class="flex justify-center space-x-4">
+            <button id="startBtn" onclick="toggleTimer()" class="px-8 py-3 rounded-xl bg-hotPink text-white font-bold shadow-neon-btn hover:bg-pink-600 transition-all flex items-center space-x-2">
+              <i data-lucide="play" class="w-4 h-4 fill-current"></i>
+              <span>START</span>
             </button>
+            <button onclick="resetTimer()" class="px-6 py-3 rounded-xl glass-card text-pink-300 font-semibold hover:bg-pink-900/50 transition-all">
+              RESET
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Task Planner -->
+      <div class="glass-card rounded-3xl p-8 flex flex-col justify-between">
+        <div>
+          <div class="flex items-center space-x-3 mb-6">
+            <i data-lucide="check-square" class="w-6 h-6 text-hotPink"></i>
+            <h4 class="font-heading font-bold text-xl text-white">Smart Study Planner</h4>
+          </div>
+
+          <div class="flex space-x-2 mb-4">
+            <input type="text" id="taskInput" placeholder="Add study target (e.g., Read Module 3)..." class="flex-1 bg-black/40 border border-pink-500/30 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-hotPink">
+            <button onclick="addTask()" class="px-5 py-2.5 rounded-xl bg-hotPink text-white font-bold hover:bg-pink-600 transition-all">
+              ADD
+            </button>
+          </div>
+
+          <ul id="taskList" class="space-y-2.5 max-h-52 overflow-y-auto pr-2">
+            <li class="flex items-center justify-between p-3 rounded-xl bg-black/30 border border-pink-500/20 text-sm">
+              <span class="text-pink-100">Review Educational Tech Presentation</span>
+              <button onclick="this.parentElement.remove()" class="text-pink-400 hover:text-hotPink"><i data-lucide="trash-2" class="w-4 h-4"></i></button>
+            </li>
+          </ul>
         </div>
 
-        <!-- Mobile Menu Dropdown -->
-        <div id="mobile-menu" class="hidden md:hidden mt-2 glass-card rounded-2xl p-4 space-y-3 bg-white/95">
-            <a href="#home" class="block py-2 text-pink-900 font-semibold hover:text-cyberpink-600">Home</a>
-            <a href="#timer" class="block py-2 text-pink-900 font-semibold hover:text-cyberpink-600">Study Hub</a>
-            <a href="#planner" class="block py-2 text-pink-900 font-semibold hover:text-cyberpink-600">Planner</a>
-            <a href="#journal" class="block py-2 text-pink-900 font-semibold hover:text-cyberpink-600">Journal</a>
-            <a href="#resources" class="block py-2 text-pink-900 font-semibold hover:text-cyberpink-600">Resource Desk</a>
+        <div class="mt-6 pt-4 border-t border-pink-500/20 flex items-center justify-between text-xs text-pink-300">
+          <span>Keep your study targets small and manageable!</span>
+          <i data-lucide="smile" class="w-4 h-4 text-hotPink"></i>
         </div>
-    </nav>
+      </div>
 
-    <!-- Hero Section -->
-    <section id="home" class="relative pt-12 pb-20 overflow-hidden">
-        <!-- Cyber Floating Stickers -->
-        <div class="absolute top-12 left-6 sm:left-16 glass-card px-3 py-1.5 rounded-full text-xs font-bold text-cyberpink-600 flex items-center gap-1.5 animate-sticker shadow-sm">
-            <span>⚡</span> Focus Mode: Activated
+    </div>
+  </section>
+
+  <!-- FLASHCARDS SECTION -->
+  <section id="flashcards" class="py-16 px-6 max-w-6xl mx-auto w-full">
+    <div class="text-center mb-12">
+      <h3 class="font-heading text-3xl font-bold text-white mb-2">Smart Learning Cards</h3>
+      <p class="text-pink-200/70 text-sm">Click any card to flip and reveal effective study techniques.</p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      
+      <!-- Card 1 -->
+      <div class="h-64 perspective-1000 cursor-pointer" onclick="this.querySelector('.card-inner').classList.toggle('rotate-y-180')">
+        <div class="card-inner w-full h-full relative transform-style-3d transition-transform duration-500">
+          <div class="absolute inset-0 glass-card rounded-2xl p-6 flex flex-col justify-between items-center text-center backface-hidden border-hotPink/30">
+            <i data-lucide="brain" class="w-10 h-10 text-hotPink"></i>
+            <h5 class="font-heading text-lg font-bold text-white">Active Recall</h5>
+            <p class="text-xs text-pink-300">Click to flip card ⚡</p>
+          </div>
+          <div class="absolute inset-0 glass-card rounded-2xl p-6 flex flex-col justify-center items-center text-center backface-hidden rotate-y-180 bg-gradient-to-br from-pink-950/80 to-purple-950/80 border-hotPink">
+            <p class="text-sm text-pink-100 leading-relaxed">Testing yourself without looking at notes strengthens neural pathways and memory retention much faster than passive re-reading.</p>
+          </div>
         </div>
-        <div class="absolute top-28 right-8 sm:right-20 glass-card px-3 py-1.5 rounded-full text-xs font-bold text-cyberlavender-800 flex items-center gap-1.5 animate-sticker shadow-sm" style="animation-delay: 1.5s;">
-            <span>🎧</span> Lo-Fi Beats On
+      </div>
+
+      <!-- Card 2 -->
+      <div class="h-64 perspective-1000 cursor-pointer" onclick="this.querySelector('.card-inner').classList.toggle('rotate-y-180')">
+        <div class="card-inner w-full h-full relative transform-style-3d transition-transform duration-500">
+          <div class="absolute inset-0 glass-card rounded-2xl p-6 flex flex-col justify-between items-center text-center backface-hidden border-hotPink/30">
+            <i data-lucide="layers" class="w-10 h-10 text-hotPink"></i>
+            <h5 class="font-heading text-lg font-bold text-white">Spaced Repetition</h5>
+            <p class="text-xs text-pink-300">Click to flip card ⚡</p>
+          </div>
+          <div class="absolute inset-0 glass-card rounded-2xl p-6 flex flex-col justify-center items-center text-center backface-hidden rotate-y-180 bg-gradient-to-br from-pink-950/80 to-purple-950/80 border-hotPink">
+            <p class="text-sm text-pink-100 leading-relaxed">Reviewing study material at increasing time intervals (1 day, 3 days, 1 week) prevents forgetting and moves ideas to long-term memory.</p>
+          </div>
         </div>
-        <div class="absolute bottom-10 left-12 glass-card px-3 py-1.5 rounded-full text-xs font-bold text-pink-700 flex items-center gap-1.5 animate-sticker shadow-sm" style="animation-delay: 2.5s;">
-            <span>🧠</span> Smart Active Recall
+      </div>
+
+      <!-- Card 3 -->
+      <div class="h-64 perspective-1000 cursor-pointer" onclick="this.querySelector('.card-inner').classList.toggle('rotate-y-180')">
+        <div class="card-inner w-full h-full relative transform-style-3d transition-transform duration-500">
+          <div class="absolute inset-0 glass-card rounded-2xl p-6 flex flex-col justify-between items-center text-center backface-hidden border-hotPink/30">
+            <i data-lucide="message-square" class="w-10 h-10 text-hotPink"></i>
+            <h5 class="font-heading text-lg font-bold text-white">The Feynman Technique</h5>
+            <p class="text-xs text-pink-300">Click to flip card ⚡</p>
+          </div>
+          <div class="absolute inset-0 glass-card rounded-2xl p-6 flex flex-col justify-center items-center text-center backface-hidden rotate-y-180 bg-gradient-to-br from-pink-950/80 to-purple-950/80 border-hotPink">
+            <p class="text-sm text-pink-100 leading-relaxed">Explain complex concepts in simple terms as if teaching a beginner. If you get stuck, re-read the topic to fix knowledge gaps.</p>
+          </div>
         </div>
+      </div>
 
-        <div class="max-w-5xl mx-auto px-4 sm:px-6 text-center relative z-10">
-            <!-- Glowing Tagline Badge -->
-            <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-cyberpink-100 border border-cyberpink-300 text-cyberpink-700 text-xs font-bold uppercase tracking-wider mb-6 glow-pill">
-                <span class="text-cyberpink-500">✨</span> Cyber-Kawaii Study Studio
-            </div>
+    </div>
+  </section>
 
-            <!-- Site Name & Tagline -->
-            <h1 class="font-extrabold text-5xl sm:text-6xl md:text-7xl tracking-tight leading-tight text-pink-950 mb-3">
-                LearnWithMic
-                <span class="block text-2xl sm:text-3xl md:text-4xl font-serif italic font-normal text-transparent bg-clip-text bg-gradient-to-r from-cyberpink-500 to-cyberlavender-500 mt-2">
-                    Study Smart not Hard
-                </span>
-            </h1>
-
-            <!-- Required Introduction Statement -->
-            <p class="max-w-2xl mx-auto text-base sm:text-lg text-pink-950/80 leading-relaxed font-normal mb-8">
-                Where I document my journey, share educational tools and help students discover better and stress-free ways to learn.
-            </p>
-
-            <!-- Hero Action Buttons -->
-            <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-                <a href="#timer" class="w-full sm:w-auto px-8 py-3.5 rounded-full bg-gradient-to-r from-cyberpink-500 via-cyberpink-600 to-cyberlavender-500 text-white font-bold text-sm shadow-lg shadow-cyberpink-500/30 hover:shadow-cyberpink-500/50 hover:scale-105 transition-all flex items-center justify-center gap-2 glow-pill">
-                    <span>⚡</span> Explore Tools
-                </a>
-                <a href="#journal" class="w-full sm:w-auto px-8 py-3.5 rounded-full bg-white/90 text-cyberpink-700 border-2 border-cyberpink-200 hover:border-cyberpink-400 font-bold text-sm hover:scale-105 transition-all shadow-sm flex items-center justify-center gap-2">
-                    <span>📖</span> Read My Journal
-                </a>
-            </div>
-
-            <!-- Study Desk Visual Highlight Banner -->
-            <div class="mt-14 max-w-4xl mx-auto glass-card rounded-3xl p-6 sm:p-8 relative text-left overflow-hidden border-2 border-cyberpink-200">
-                <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 border-b border-cyberpink-100 pb-4 mb-4">
-                    <div class="flex items-center gap-3">
-                        <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-cyberpink-400 to-cyberlavender-500 flex items-center justify-center text-white text-xl font-bold shadow">
-                            💻
-                        </div>
-                        <div>
-                            <h3 class="font-bold text-base text-pink-950">Mic's Digital Desk Console</h3>
-                            <p class="text-xs text-cyberpink-600 font-medium">Stress-Free Learning Routine</p>
-                        </div>
-                    </div>
-                    <div class="flex items-center gap-2">
-                        <span class="px-3 py-1 rounded-full bg-cyberpink-100 text-cyberpink-700 text-xs font-bold">Status: Focused 🚀</span>
-                    </div>
-                </div>
-                <p class="text-xs sm:text-sm text-pink-950/80 leading-relaxed font-sans">
-                    "Studying shouldn't mean draining your battery. Combining timed study sprints, active retrieval flashcards, and organized task lists lets you achieve top grades while staying happy and well-rested!"
-                </p>
-            </div>
+  <!-- RESOURCES HUB -->
+  <section id="resources" class="py-16 px-6 max-w-6xl mx-auto w-full">
+    <div class="glass-card rounded-3xl p-8 md:p-12 relative overflow-hidden">
+      <div class="flex flex-col md:flex-row items-center justify-between gap-8">
+        <div>
+          <span class="text-xs font-bold text-hotPink tracking-widest uppercase">Educational Tools & Freebies</span>
+          <h3 class="font-heading text-3xl font-bold text-white mt-1 mb-3">Mic's Study Toolkit</h3>
+          <p class="text-sm text-pink-100/80 max-w-xl leading-relaxed">
+            Access free study planner templates, curated Spotify study playlists, and digital learning tools designed to keep your routine stress-free.
+          </p>
         </div>
-    </section>
+        <div class="flex flex-col sm:flex-row gap-4 w-full md:w-auto">
+          <a href="#" onclick="alert('Downloading Mic\'s Smart Planner Template PDF!'); return false;" class="px-6 py-3 rounded-xl bg-hotPink text-white font-bold text-sm text-center shadow-neon-btn hover:bg-pink-600 transition-all flex items-center justify-center space-x-2">
+            <i data-lucide="download" class="w-4 h-4"></i>
+            <span>Get Free Planner</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
 
-    <!-- Interactive Study Hub Section (Timer & Audio) -->
-    <section id="timer" class="py-16 relative">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6">
-            <div class="text-center mb-10">
-                <span class="text-xs font-bold uppercase tracking-widest text-cyberpink-600 bg-cyberpink-100 px-3 py-1 rounded-full border border-cyberpink-200">
-                    Interactive Workspace
-                </span>
-                <h2 class="font-bold text-3xl sm:text-4xl text-pink-950 mt-2">Studio Focus Hub ⚡</h2>
-                <p class="text-xs sm:text-sm text-pink-950/70 max-w-lg mx-auto mt-1">Combine aesthetic timing with relaxing ambient audio for peak concentration.</p>
-            </div>
+  <!-- FOOTER -->
+  <footer class="glass-nav py-8 px-6 text-center text-xs text-pink-300/70 border-t border-pink-500/20">
+    <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
+      <p>© 2026 LearnWithMic — Built with ❤️ for stress-free learning.</p>
+      <div class="flex space-x-6">
+        <a href="#hero" class="hover:text-hotPink">Home</a>
+        <a href="#tools" class="hover:text-hotPink">Tools</a>
+        <a href="#resources" class="hover:text-hotPink">Resources</a>
+      </div>
+    </div>
+  </footer>
 
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-                
-                <!-- Component 1: Cyber-Kawaii Pomodoro Timer (7 cols) -->
-                <div class="lg:col-span-7 glass-card p-6 sm:p-8 rounded-3xl relative">
-                    <div class="flex justify-between items-center mb-6">
-                        <div class="flex items-center gap-2">
-                            <span class="text-xl">⏱️</span>
-                            <h3 class="font-bold text-lg text-pink-950">Pomodoro Timer</h3>
-                        </div>
-                        <span id="timer-badge" class="px-3 py-1 rounded-full bg-cyberpink-100 text-cyberpink-700 text-xs font-bold border border-cyberpink-200">
-                            Work Sprint (25m)
-                        </span>
-                    </div>
+  <!-- VIDEO PLAYER MODAL -->
+  <div id="videoModal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-md hidden flex items-center justify-center p-4">
+    <div class="glass-card w-full max-w-4xl rounded-3xl overflow-hidden border border-hotPink/50 shadow-neon-glow relative flex flex-col">
+      
+      <!-- Modal Header -->
+      <div class="p-4 px-6 bg-black/60 flex items-center justify-between border-b border-pink-500/30">
+        <div class="flex items-center space-x-3">
+          <i data-lucide="video" class="w-5 h-5 text-hotPink"></i>
+          <span class="font-heading font-bold text-white text-lg">LearnWithMic — Introduction Video</span>
+        </div>
+        <button onclick="closeVideoModal()" class="w-8 h-8 rounded-full bg-pink-900/40 text-pink-200 hover:bg-hotPink hover:text-white transition-colors flex items-center justify-center">
+          <i data-lucide="x" class="w-5 h-5"></i>
+        </button>
+      </div>
 
-                    <!-- Glowing Timer Outer Circle -->
-                    <div class="my-8 flex justify-center">
-                        <div class="relative w-56 h-56 rounded-full border-4 border-cyberpink-300 bg-white/90 flex flex-col items-center justify-center shadow-xl glow-pill">
-                            <span id="timer-display" class="font-extrabold text-5xl tracking-tight text-pink-950">25:00</span>
-                            <span id="timer-status" class="text-xs font-bold text-cyberpink-600 mt-2 uppercase tracking-wider">Ready to study?</span>
-                            <div class="absolute -top-3 px-3 py-0.5 rounded-full bg-cyberpink-500 text-white text-[10px] font-bold shadow">
-                                LEARN WITH MIC 🎀
-                            </div>
-                        </div>
-                    </div>
+      <!-- Video Embed Container -->
+      <div class="relative w-full aspect-video bg-black">
+        <iframe 
+          id="introVideoFrame"
+          class="w-full h-full"
+          src="" 
+          title="LearnWithMic Introduction Video"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+          allowfullscreen>
+        </iframe>
+      </div>
 
-                    <!-- Preset Mode Buttons -->
-                    <div class="grid grid-cols-3 gap-2 sm:gap-3 mb-6">
-                        <button onclick="setTimerPreset('work')" class="py-2.5 rounded-2xl bg-cyberpink-100 hover:bg-cyberpink-200 text-cyberpink-700 font-bold text-xs transition border border-cyberpink-200 flex flex-col sm:flex-row items-center justify-center gap-1">
-                            <span>🧠</span> Work (25m)
-                        </button>
-                        <button onclick="setTimerPreset('short')" class="py-2.5 rounded-2xl bg-cyberpink-100 hover:bg-cyberpink-200 text-cyberpink-700 font-bold text-xs transition border border-cyberpink-200 flex flex-col sm:flex-row items-center justify-center gap-1">
-                            <span>☕</span> Short (5m)
-                        </button>
-                        <button onclick="setTimerPreset('long')" class="py-2.5 rounded-2xl bg-cyberpink-100 hover:bg-cyberpink-200 text-cyberpink-700 font-bold text-xs transition border border-cyberpink-200 flex flex-col sm:flex-row items-center justify-center gap-1">
-                            <span>🌷</span> Long (15m)
-                        </button>
-                    </div>
+    </div>
+  </div>
 
-                    <!-- Controls -->
-                    <div class="flex items-center gap-3">
-                        <button id="timer-start-btn" onclick="toggleTimer()" class="flex-1 py-3.5 rounded-2xl bg-gradient-to-r from-cyberpink-500 to-cyberpink-600 hover:from-cyberpink-600 hover:to-cyberpink-700 text-white font-bold text-sm shadow-md transition transform active:scale-95 flex items-center justify-center gap-2">
-                            <i class="fa-solid fa-play"></i> Start Session
-                        </button>
-                        <button onclick="resetTimer()" class="p-3.5 rounded-2xl bg-white border border-cyberpink-200 text-cyberpink-700 hover:bg-cyberpink-50 transition shadow-sm">
-                            <i class="fa-solid fa-rotate-right"></i>
-                        </button>
-                    </div>
-                </div>
+  <!-- JAVASCRIPT LOGIC -->
+  <script>
+    // Initialize Lucide Icons
+    lucide.createIcons();
 
-                <!-- Component 2: Ambient Sound Simulator (5 cols) -->
-                <div class="lg:col-span-5 glass-card p-6 sm:p-8 rounded-3xl relative">
-                    <div class="flex justify-between items-center mb-4">
-                        <div class="flex items-center gap-2">
-                            <span class="text-xl">🎧</span>
-                            <h3 class="font-bold text-lg text-pink-950">Ambient Sound Deck</h3>
-                        </div>
-                        <span class="text-[10px] font-bold text-cyberlavender-800 bg-cyberlavender-100 px-2.5 py-1 rounded-full border border-cyberlavender-300">Synth Sound Engine</span>
-                    </div>
+    // Video Modal Controls
+    const videoModal = document.getElementById('videoModal');
+    const introVideoFrame = document.getElementById('introVideoFrame');
+    const videoUrl = "https://drive.google.com/file/d/10Ral6GUJEfOjCfJt8tfbZHsh51iN_EEi/preview";
 
-                    <p class="text-xs text-pink-950/70 mb-5">Click sound cards below to mix calming study background noise directly in your browser.</p>
+    function openVideoModal() {
+      introVideoFrame.src = videoUrl;
+      videoModal.classList.remove('hidden');
+    }
 
-                    <!-- Sound Toggles -->
-                    <div class="space-y-3">
-                        <!-- Rain Sound Card -->
-                        <div class="flex items-center justify-between p-3.5 bg-white/80 rounded-2xl border border-cyberpink-200">
-                            <div class="flex items-center gap-3">
-                                <span class="text-2xl">🌧️</span>
-                                <div>
-                                    <h4 class="font-bold text-xs text-pink-950">Soft Pink Rain</h4>
-                                    <p class="text-[10px] text-pink-950/60">Gentle raindrop rhythm</p>
-                                </div>
-                            </div>
-                            <button id="btn-sound-rain" onclick="toggleAmbientSound('rain')" class="px-4 py-1.5 rounded-xl bg-cyberpink-100 hover:bg-cyberpink-200 text-cyberpink-700 text-xs font-bold transition">
-                                Play ⏯️
-                            </button>
-                        </div>
+    function closeVideoModal() {
+      introVideoFrame.src = "";
+      videoModal.classList.add('hidden');
+    }
 
-                        <!-- Cafe Ambience Sound Card -->
-                        <div class="flex items-center justify-between p-3.5 bg-white/80 rounded-2xl border border-cyberpink-200">
-                            <div class="flex items-center gap-3">
-                                <span class="text-2xl">☕</span>
-                                <div>
-                                    <h4 class="font-bold text-xs text-pink-950">Kawaii Cafe Ambience</h4>
-                                    <p class="text-[10px] text-pink-950/60">Warm coffee shop chatter</p>
-                                </div>
-                            </div>
-                            <button id="btn-sound-cafe" onclick="toggleAmbientSound('cafe')" class="px-4 py-1.5 rounded-xl bg-cyberpink-100 hover:bg-cyberpink-200 text-cyberpink-700 text-xs font-bold transition">
-                                Play ⏯️
-                            </button>
-                        </div>
+    // Close modal when clicking outside
+    videoModal.addEventListener('click', (e) => {
+      if (e.target === videoModal) closeVideoModal();
+    });
 
-                        <!-- Lo-Fi Be
+    // Pomodoro Timer Logic
+    let timerInterval = null;
+    let timeLeft = 25 * 60;
+    let isRunning = false;
+
+    const timerDisplay = document.getElementById('timerDisplay');
+    const startBtn = document.getElementById('startBtn');
+    const timerModeLabel = document.getElementById('timerModeLabel');
+
+    function updateDisplay() {
+      const minutes = Math.floor(timeLeft / 60);
+      const seconds = timeLeft % 60;
+      timerDisplay.textContent = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+    }
+
+    function toggleTimer() {
+      if (isRunning) {
+        clearInterval(timerInterval);
+        isRunning = false;
+        startBtn.innerHTML = `<i data-lucide="play" class="w-4 h-4 fill-current"></i><span>START</span>`;
+      } else {
+        isRunning = true;
+        startBtn.innerHTML = `<i data-lucide="pause" class="w-4 h-4 fill-current"></i><span>PAUSE</span>`;
+        timerInterval = setInterval(() => {
+          if (timeLeft > 0) {
+            timeLeft--;
+            updateDisplay();
+          } else {
+            clearInterval(timerInterval);
+            isRunning = false;
+            alert("Timer finished! Take a break or start another focus session.");
+            resetTimer();
+          }
+        }, 1000);
+      }
+      lucide.createIcons();
+    }
+
+    function resetTimer() {
+      clearInterval(timerInterval);
+      isRunning = false;
+      timeLeft = 25 * 60;
+      timerModeLabel.textContent = "Study Mode";
+      startBtn.innerHTML = `<i data-lucide="play" class="w-4 h-4 fill-current"></i><span>START</span>`;
+      updateDisplay();
+      lucide.createIcons();
+    }
+
+    function setTimerMode(mode) {
+      clearInterval(timerInterval);
+      isRunning = false;
+      startBtn.innerHTML = `<i data-lucide="play" class="w-4 h-4 fill-current"></i><span>START</span>`;
+      if (mode === 'study') {
+        timeLeft = 25 * 60;
+        timerModeLabel.
